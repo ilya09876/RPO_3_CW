@@ -1,51 +1,65 @@
+#define NOMINMAX
 #include <iostream>
 #include <Windows.h>
-
-void SetMemory(int *&ptr, int &size)
-{
-	if (ptr != nullptr)
-	{
-		delete[] ptr;
-	}
-	ptr = new int[size]{};
-}
-
-void FillArray(int *&ptr, int &size)
-{
-	for (int i = 0; i < size; i++)
-	{
-		ptr[i] = rand() % 101 - 50;
-	}
-}
-
-void DelArray(int *&ptr)
-{
-	if (ptr = nullptr)
-	{
-		return;
-	}
-	delete[] ptr;
-	ptr = nullptr;
-}
+#include <string>
+#include <limits>
 
 int main()
 {
 	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8);
 
-	int size = 5;
-	int* ptr = nullptr;
+	std::string login;
+	std::string password;
 
-	SetMemory(ptr, size);
-	FillArray(ptr, size);
-
-	for (size_t i = 0; i < size; i++)
+	while (true)
 	{
-		std::cout << ptr[i] << " ";
+		system("cls");
+		std::cout << "-----Регистрация-----\n";
+
+		std::cout << "Введите логин(От 5 до 15 символов): ";
+		std::getline(std::cin, login);
+		if (login.size() < 5 || login.size() > 15)
+		{
+			std::cout << "Неверное колличество символов!\n";
+			system("pause");
+			continue;
+		}
+
+		std::cout << "Введите пароль(От 5 до 15 символов): ";
+		std::getline(std::cin, password);
+		if (password.size() < 5 || password.size() > 15)
+		{
+			std::cout << "Неверное колличество символов!\n";
+			system("pause");
+			continue;
+		}
+		break;
 	}
 
-	DelArray(ptr);
+	while (true)
+	{
+		std::string enteredlogin;
+		std::string enteredpassword;
 
+		system("cls");
+		std::cout << "-----Авторизация-----\n";
+
+		std::cout << "Введите логин: ";
+		std::getline(std::cin, enteredlogin);
+
+		std::cout << "Введите пароль: ";
+		std::getline(std::cin, enteredpassword);
+		if (enteredlogin != login || enteredpassword != password)
+		{
+			std::cout << "Неверный логин или пароль!\n";
+			system("pause");
+			continue;
+		}
+
+		std::cout << "Успешная авторизация!\n";
+		break;
+	}
 
 	return 0;
 }
@@ -245,4 +259,136 @@ int main()
 
 	return 0;
 }
+*/
+
+/*
+void SetMemory(int *&ptr, int &size)
+{
+	if (ptr != nullptr)
+	{
+		delete[] ptr;
+	}
+	ptr = new int[size]{};
+}
+
+void FillArray(int *&ptr, int &size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		ptr[i] = rand() % 101 - 50;
+	}
+}
+
+void DelArray(int *&ptr)
+{
+	if (ptr = nullptr)
+	{
+		return;
+	}
+	delete[] ptr;
+	ptr = nullptr;
+}
+
+int main()
+{
+	SetConsoleCP(CP_UTF8);
+	SetConsoleOutputCP(CP_UTF8);
+
+	int size = 5;
+	int* ptr = nullptr;
+
+	SetMemory(ptr, size);
+	FillArray(ptr, size);
+
+	for (size_t i = 0; i < size; i++)
+	{
+		std::cout << ptr[i] << " ";
+	}
+
+	DelArray(ptr);
+
+
+	return 0;
+}
+*/
+
+/*
+	std::string name = "text 1";
+	std::string one = "\nNew text " + name;
+
+	std::string* ptr = nullptr;
+	ptr = new std::string[5];
+	delete[] ptr;
+
+	std::string arr[5]{ "Apple", "Garlic", "Ivan", "Farit", "Cola" };
+
+	// auto lol = std::find(arr->begin(), arr->end(), "Ivan");
+
+	// name.erase(1);
+
+	std::string test = "Text";
+	std::string text2 = "Иван Иван";
+
+	for (int i = 0; i < test.size(); i++)
+	{
+		if (test[i] == 'T')
+		{
+			std::cout << 't';
+		}
+		else
+		{
+			std::cout << test[i];
+		}
+	}
+
+	std::cout << name;
+	*/
+
+/*
+	std::string one;
+	int num = 0;
+
+	while (true)
+	{
+		system("cls");
+
+		// std::getline(откуда_взять_текст, куда_его_положить)
+		std::getline(std::cin, one);
+		std::cout << one << std::endl;
+
+		std::getline(std::cin, one, "u");
+		std::cout << one << std::endl;
+
+		//std::cin >> num;
+		//std::cout << num << std::endl;
+
+		//std::cin.ignore(32767, '\n'); // Способ 1, не самый лучший
+
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // лучший способ
+
+
+
+		system("pause");
+	}
+	*/
+
+/*
+	// ОТЛАДКА
+
+	int num = 0;
+	int num2;
+	std::string text;
+	std::string text2 = "Info";
+
+	std::cout << text;
+	std::cout << text2 << "\n";
+
+	for (int i = 0; i < text2.size(); i++)
+	{
+		std::cout << text2[i];
+	}
+
+	std::cin >> num2;
+	std::cout << num2 << "\n";
+	PrintInfo(num, num2);
 */
